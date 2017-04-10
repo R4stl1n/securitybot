@@ -23,6 +23,6 @@ except Exception as e:
     e.msg()
 finally:
     cveClassRt.stop()
-    cveClassRt.stop()
-    redditPostRt.stop()
+    cvePostRt.stop()
+    redditClassRt.stop()
     redditPostRt.stop()

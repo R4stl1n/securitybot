@@ -77,6 +77,6 @@ class CVEClass:
 
     def writeCVEListToFile(self):
         print "Writing CVEList to file"
-        file = open('cvestore.db', 'w')
+        file = open(self.store_name, 'w')
         file.write(json.dumps(self.cached_cve_ids))
         file.close()

@@ -22,5 +22,7 @@ try:
 except Exception as e:
     e.msg()
 finally:
+	cveClassRt.stop()
+	cvePostRt.stop()
     redditClassRt.stop()
     redditPostRt.stop()

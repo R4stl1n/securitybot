@@ -13,8 +13,8 @@ cveClassRt = RepeatedTimer(300, cveClass.cveUpdate) # Update every 5 minutes
 cvePostRt = RepeatedTimer(480, cveClass.dequeueMessage) # Post every 8 minutes
 
 redditClass = RedditClass('/r/netsec')
-redditClassRt = RepeatedTimer(1800, redditClass.redditUpdate) # Update every 30 minutes
-redditPostRt = RepeatedTimer(480, redditClass.dequeueMessage) # Post every 8 minutes
+redditClassRt = RepeatedTimer(3600, redditClass.redditUpdate) # Update every 60 minutes
+redditPostRt = RepeatedTimer(1200, redditClass.dequeueMessage) # Post every 20 minutes
 
 try:
     while True:
@@ -22,7 +22,7 @@ try:
 except Exception as e:
     e.msg()
 finally:
-    cveClassRt.stop()
-    cvePostRt.stop()
+	cveClassRt.stop()
+   	cvePostRt.stop()
     redditClassRt.stop()
     redditPostRt.stop()

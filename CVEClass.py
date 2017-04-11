@@ -13,7 +13,7 @@ class CVEClass:
         self.cached_cve_ids = []
         self.message_queue = CustQueue()
         self.mastodonClass = MastodonClass()
-        self.mastodonClass.initalize()
+        self.mastodonClass.initialize()
         self.readCVEListFromFile()
 
     def cveUpdate(self):

@@ -19,27 +19,35 @@ class RedditClass:
 
 	def redditUpdate(self):
 		print 'Browsing Reddit...'
-		r = requests.get(self.URL)
-		sleep(2)
-		data = r.json()
 		
-		print 'Processing request'
-		
-		for child in data['data']['children']:
+		try:
+			r = requests.get(self.URL)
+			sleep(4)
+			data = r.json()
+			
+			print 'Processing request'
+			
+			for child in data['data']['children']:
 
-			reddit_string = ''
-			id = child['data']['id']
+				reddit_string = ''
+				id = child['data']['id']
 
-			if id in self.cached_reddit_ids or id=='640qr2' or id=='63ph2l':
-				pass
-			else:
-				self.cached_reddit_ids.append(id)
+				if id in self.cached_reddit_ids or id=='640qr2' or id=='63ph2l':
+					pass
+				else:
+					if len(self.cached_reddit_ids) == 30:
+						self.cached_reddit_ids.pop()
 
-				reddit_string += child['data']['title']
-				reddit_string += ':\n\n'
-				reddit_string += child['data']['url']
+					self.cached_reddit_ids.append(id)
 
-				self.message_queue.enqueue(reddit_string)
+					reddit_string += child['data']['title']
+					reddit_string += ':\n\n'
+					reddit_string += child['data']['url']
+
+					self.message_queue.enqueue(reddit_string)
+
+		except:
+			print 'Error fetching data...'
 
 		self.writeRedditToFile()
 	

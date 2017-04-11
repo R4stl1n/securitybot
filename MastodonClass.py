@@ -9,7 +9,7 @@ class MastodonClass:
         self.mastodon = None
         self.instance_url = 'https://securitymastod.one'
 
-    def initalize(self):
+    def initialize(self):
         if not os.path.isfile("security_bot_clientcred.txt"):
             print("Creating app")
             self.mastodon = Mastodon.create_app(
@@ -26,9 +26,9 @@ class MastodonClass:
                 client_id = 'security_bot_clientcred.txt',
                 api_base_url=self.instance_url        
             )
-            email = sys.argv[1]
-            password = sys.argv[2]
-            self.mastodon.log_in(email, password, to_file = 'security_bot_usercred.txt')
+			email = sys.argv[1]
+			password = sys.argv[2]
+			self.mastodon.log_in(email, password, to_file = 'security_bot_usercred.txt')
 
         self.mastodon = Mastodon(
             client_id = 'security_bot_clientcred.txt',

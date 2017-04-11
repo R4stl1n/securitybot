@@ -1,2 +1,5 @@
 # securitybot
-Mastodon Security bot that post CVE details
+Mastodon Security bot that posts:
+
+- CVE details
+- Latest /r/netsec reddits
